@@ -2,7 +2,7 @@ import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import type { UserConfig } from 'vite';
 import { loadEnv } from './src/utils/viteBuild';
-
+import styleImport from 'vite-plugin-style-import';
 const pathResolve = (dir: string): any => {
 	return resolve(__dirname, '.', dir);
 };
@@ -10,7 +10,18 @@ const pathResolve = (dir: string): any => {
 const { VITE_PORT, VITE_OPEN } = loadEnv();
 
 const viteConfig: UserConfig = {
-	plugins: [vue()],
+	plugins: [
+		vue(),
+		styleImport({
+			libs:[
+				{
+					libraryName:'vant',
+					esModule:true,
+					resolveStyle:(name)=>`vant/es/${name}/style`
+				}
+			]
+		})
+	],
 	root: process.cwd(),
 	resolve: {
 		alias:{

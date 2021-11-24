@@ -1,1 +1,1 @@
-import 'vant/lib/index.css'
+import 'vant/lib/style/base.less'

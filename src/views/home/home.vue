@@ -10,15 +10,18 @@
       <img src="./images/logo.png" alt="">
     </div>
     <van-button>按钮测试</van-button>
+    <van-card num="2" price="2.00" desc="描述信息" title="商品标题">
+
+    </van-card>
   </div>
 </template>
 <script>
 import { defineComponent,onMounted } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue';
 import {useStore} from '@/store/index';
-import {Toast} from 'vant'
+import {Toast,Card} from 'vant'
 export default defineComponent({
-  components: {HelloWorld},
+  components: {HelloWorld,'van-card':Card},
   name:'home_page',
   setup() {
     onMounted(()=>{
