@@ -9,7 +9,10 @@ export function signIn(params: object) {
 	return request({
 		url: '/api/admin/auth/login',
 		method: 'post',
-		data: params,
+		data:JSON.stringify(params),
+		headers:{
+			'Content-Type':'application/json'
+		}
 	});
 }
 

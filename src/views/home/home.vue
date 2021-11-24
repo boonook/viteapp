@@ -2,14 +2,7 @@
   <div>
     <h3>home</h3>
     <HelloWorld></HelloWorld>
-    <img src="@/assets/logo.png" alt="">
-    <div>
-      <img src="./images/prize.png" alt="">
-    </div>
-    <div>
-      <img src="./images/logo.png" alt="">
-    </div>
-    <van-button>按钮测试</van-button>
+    <van-button @click="onLogin">登录</van-button>
     <van-card num="2" price="2.00" desc="描述信息" title="商品标题">
 
     </van-card>
@@ -19,24 +12,34 @@
 import { defineComponent,onMounted } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue';
 import {useStore} from '@/store/index';
-import {Toast,Card} from 'vant'
+import {Toast,Card} from 'vant';
+import {signIn} from './serve'
 export default defineComponent({
   components: {HelloWorld,'van-card':Card},
   name:'home_page',
   setup() {
-    onMounted(()=>{
-      const store = useStore();
-      console.log(store.state.user.isLogin);
+    const onLogin=()=>{
       Toast({
         message:'store.state.user.isLogin',
         duration:0
-      })
-      setTimeout(()=>{
+      });
+      let params={
+        userName:'admin',
+        userPwd:'123456'
+      }
+      signIn(params).then((res)=>{
+        console.log(res);
+        debugger
+      }).catch(()=>{
         Toast.clear();
-      },2000)
+      })
+    }
+    onMounted(()=>{
+      const store = useStore();
+      console.log(store.state.user.isLogin);
     })
     return {
-      
+      onLogin
     }
   },
 })
