@@ -16,7 +16,7 @@ const viteConfig: UserConfig = {
 		alias:{
 			'@':pathResolve('./src/'),
 		},
-		// extensions: ['.js', '.mjs','.ts']
+		extensions: ['.js', '.mjs','.ts']
 	},
 	base: process.env.NODE_ENV === 'production' ? '/' : './',
 	server: {
@@ -34,10 +34,17 @@ const viteConfig: UserConfig = {
 	},
 	build: {
 		outDir: 'dist',
-		assetsDir: "./assets",
 		minify: 'esbuild',
 		sourcemap: false,
 		chunkSizeWarningLimit: 1500,
+		assetsDir: 'static/img',
+		rollupOptions: {
+			output: {
+				chunkFileNames: 'static/js/[name]-[hash].js',
+				entryFileNames: 'static/js/[name]-[hash].js',
+				assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+			},
+		},
 	},
 	define: {
 		__VUE_I18N_LEGACY_API__: JSON.stringify(false),
