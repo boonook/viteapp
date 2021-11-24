@@ -3152,10 +3152,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@^3.2.8:
-  version "3.3.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/vant/-/vant-3.3.0.tgz#6b9c611b231c84f0837010afec8cb238ce540b74"
-  integrity sha512-OJHZAURaOfQv+GE22tzvRolaymB1i/wIpSqfsgCUs7mL8RWdPbXfRZE/4aoLhsyyLB8hRQE0R18TzUcDYbfhFA==
+vant@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.npmmirror.com/vant/download/vant-3.3.1.tgz#e052d2a8bdd6046192e45e32db71960fb1868c2b"
+  integrity sha512-zo161RbfCQipwhx9ZMhFP+3JSMMbEa1hjs/zi3yX7K059nyo4B4Dwg2PC0HUeQ6a3h9WEbcYC0r4e/vhNj9T1A==
   dependencies:
     "@vant/icons" "^1.7.1"
     "@vant/popperjs" "^1.1.0"
