@@ -9,12 +9,14 @@
     <div>
       <img src="./images/logo.png" alt="">
     </div>
+    <van-button>按钮测试</van-button>
   </div>
 </template>
 <script>
 import { defineComponent,onMounted } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue';
-import {useStore} from '@/store/index'
+import {useStore} from '@/store/index';
+import {Toast} from 'vant'
 export default defineComponent({
   components: {HelloWorld},
   name:'home_page',
@@ -22,6 +24,13 @@ export default defineComponent({
     onMounted(()=>{
       const store = useStore();
       console.log(store.state.user.isLogin);
+      Toast({
+        message:'store.state.user.isLogin',
+        duration:0
+      })
+      setTimeout(()=>{
+        Toast.clear();
+      },2000)
     })
     return {
       
