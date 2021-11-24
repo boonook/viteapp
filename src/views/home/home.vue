@@ -19,8 +19,8 @@ export default defineComponent({
   name:'home_page',
   setup() {
     const onLogin=()=>{
-      Toast({
-        message:'store.state.user.isLogin',
+      Toast.loading({
+        message:'loading...',
         duration:0
       });
       let params={
