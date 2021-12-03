@@ -37,6 +37,7 @@ export default defineComponent({
     onMounted(()=>{
       const store = useStore();
       console.log(store.state.user.isLogin);
+      store.dispatch('user/setToken','boonook')
     })
     return {
       onLogin

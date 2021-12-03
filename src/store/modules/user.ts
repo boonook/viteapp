@@ -1,26 +1,36 @@
-import { createStore } from 'vuex'
 import {Session} from '@/utils/storage'
-export default createStore({
-  state: {
-	isLogin:false,
-	userInfo:{},
-	token:''
-  },
-  mutations: {
-	// 设置用户信息
-	getUserInfos(state: any, data: object) {
-		state.userInfo = data;
+import { Module } from 'vuex';
+
+const userModule: Module<any, any> = {
+	namespaced: true,
+	state: {
+		isLogin:false,
+		userInfo:{},
+		token:''
 	},
-  },
-  actions: {
-	// 设置用户信息
-	async setUserInfos({ commit }, data: object) {
-		if (data) {
-			commit('getUserInfos', data);
-		} else {
-			if (Session.get('userInfo')) commit('getUserInfos', Session.get('userInfo'));
-		}
+	mutations: {
+		// 设置用户信息
+		getUserInfos(state: any, data: object) {
+			state.userInfo = data;
+		},
+		getToken(state: any, data:string) {
+			state.token = data;
+		},
 	},
-  },
-  modules: {},
-})
+	actions: {
+		// 设置用户信息
+		async setUserInfos({ commit }, data: object) {
+			if (data) {
+				commit('getUserInfos', data);
+			} else {
+				if (Session.get('userInfo')) commit('getUserInfos', Session.get('userInfo'));
+			}
+		},
+		async setToken({ commit }, data:string) {
+			commit('getToken', data);
+		},
+	},
+	modules: {},
+};
+
+export default userModule;
